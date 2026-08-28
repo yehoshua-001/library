@@ -1,4 +1,5 @@
 const bookShelf = [];
+
 function Book(title, author, pages, datePublish, readStatus){
     if(!new.target){
         throw Error(`You must use the 'new' operator to call the constructor`);
@@ -10,12 +11,25 @@ function Book(title, author, pages, datePublish, readStatus){
     this.datePublish = datePublish;
     this.readStatus = readStatus;
 }
+
 function addBookToShelf(title, author, pages, datePublish, readStatus){
     const book = new Book(title, author, pages, datePublish, readStatus);
     bookShelf.push(book);
 }
 
-// Test (check console output)
-addBookToShelf(`book1`, `joshua`, `67`, `1738`, true);
-addBookToShelf(`book2`, `joshua`, `69`, `2026`, false);
-bookShelf.forEach(book => console.table(book));
+const form = document.querySelector('#form');
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const pages = document.querySelector('#pages').value;
+    const datePublish = document.querySelector('#datePublish').value;
+    const readStatus = document.querySelector('input[name="readStatus"]:checked').value;
+
+    addBookToShelf(title, author, pages, datePublish, readStatus);
+    form.reset();
+
+    // Test (check console output)
+    bookShelf.forEach(book => console.table(book));    
+});
+
