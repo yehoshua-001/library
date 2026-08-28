@@ -14,7 +14,7 @@
     <main>
         <section class="shelves">
             <div>
-                <div></div>
+                <div id="bookShelf"></div>
                 <div></div>
             </div>
             <div>
@@ -27,11 +27,52 @@
             </div>
         </section>
         <section class="bottom">
-            <button>Add New Book</button>
+            <button command="show-modal" commandfor="dialog">Add New Book</button>
+            <dialog id="dialog">
+                <button type="reset" id="closeBtn" command="close" commandfor="dialog">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <title>close</title>
+                        <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+                    </svg>
+                </button>
+                <form id="form" action="">
+                    <div id="item-a">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" required>
+                    </div>
+                    <div id="item-b">
+                        <label for="author">Author</label>
+                        <input type="text" name="author" id="author" required>
+                    </div>
+                    <div id="item-c">
+                        <label for="pages">Pages</label>
+                        <input type="tel" name="pages" id="pages" required>
+                    </div>
+                    <div id="item-d">
+                        <label for="datePublish">Date Published</label>
+                        <input type="date" name="datePublish" id="datePublish" required>
+                    </div>
+                    <div id="item-e">
+                        <fieldset>
+                            <legend>Have you read this book?</legend>
+                            <input type="radio" name="readStatus" id="yes" value="read" required>
+                            <label for="yes">Yes</label>
+                            <input type="radio" name="readStatus" id="no" value="not read yet">
+                            <label for="no">Not yet</label>
+                        </fieldset>
+                    </div>
+                </form>
+                <button id="submitBtn" type="submit" form="form">Add Book</button>
+                <button id="cancelBtn" type="reset" command="close" commandfor="dialog">Cancel</button>
+            </dialog>
         </section>
     </main>
     <footer>
-        <p>footer</p>
+        <div class="footerlink">
+            &copy;
+            <a id="odinlink" href="https://www.theodinproject.com/about" target="_blank">The Odin Project</a>. All rights reserved. | 
+            <a id="githublink" href="https://github.com/yehoshua-001/library" target="_blank">github.com/yehoshua-001</a>
+        </div>
     </footer>
 </body>
 </html>
