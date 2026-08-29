@@ -127,7 +127,7 @@ main .shelves {
 
 .shelves > div > div {
     width: 80%;
-    height: 100%;
+    max-height: 150px;
     /* border: 1px solid black; */
 }
 
@@ -257,4 +257,38 @@ footer .footerlink {
 
 .footerlink > a {
     color: #000000;
+}
+
+/* Books displayed on the shelves styles */
+div[id="shelf1"],
+div[id="shelf2"],
+div[id="shelf3"] {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(0, 50px));
+    gap: 5px;
+}
+
+.book {
+    display: grid;
+    grid-template-rows: minmax(0, 130px);
+    justify-items: center;
+    align-items: end;
+    padding: 5px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #ffffff;
+    transition: transform 0.2s ease-in-out;
+}
+
+.book:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 10px 2px rgba(255, 255, 255, 1);
+}
+
+.book-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    writing-mode: sideways-lr;
+    text-orientation: mixed;
+    cursor: pointer;
 }
