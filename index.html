@@ -25,34 +25,69 @@
                 <div id="shelf3"></div>
                 <div></div>
             </div>
+            <dialog id="bookDialog">
+                <button class="closeBtn" command="close" commandfor="bookDialog">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <title>close</title>
+                        <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+                    </svg>
+                </button>
+                <form id="bookDialogForm">
+                    <div class="item-a">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" disabled>
+                    </div>
+                    <div class="item-b">
+                        <label for="author">Author</label>
+                        <input type="text" name="author" id="author" disabled>
+                    </div>
+                    <div class="item-c">
+                        <label for="pages">Pages</label>
+                        <input type="tel" name="pages" id="pages" disabled>
+                    </div>
+                    <div class="item-d">
+                        <label for="datePublish">Date Published</label>
+                        <input type="date" name="datePublish" id="datePublish" disabled>
+                    </div>
+                    <div class="item-e">
+                        <fieldset>
+                            <legend>Have you read this book?</legend>
+                            <input type="radio" name="readStatus" id="yes" value="read">
+                            <label for="yes">Yes</label>
+                            <input type="radio" name="readStatus" id="no" value="not read yet">
+                            <label for="no">Not yet</label>
+                        </fieldset>
+                    </div>
+                </form>
+            </dialog>
         </section>
         <section class="bottom">
             <button command="show-modal" commandfor="dialog">Add New Book</button>
             <dialog id="dialog">
-                <button id="closeBtn" command="close" commandfor="dialog">
+                <button class="closeBtn" command="close" commandfor="dialog">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <title>close</title>
                         <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
                     </svg>
                 </button>
                 <form id="form" action="">
-                    <div id="item-a">
+                    <div class="item-a">
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" required>
                     </div>
-                    <div id="item-b">
+                    <div class="item-b">
                         <label for="author">Author</label>
                         <input type="text" name="author" id="author" required>
                     </div>
-                    <div id="item-c">
+                    <div class="item-c">
                         <label for="pages">Pages</label>
                         <input type="tel" name="pages" id="pages" required>
                     </div>
-                    <div id="item-d">
+                    <div class="item-d">
                         <label for="datePublish">Date Published</label>
                         <input type="date" name="datePublish" id="datePublish" required>
                     </div>
-                    <div id="item-e">
+                    <div class="item-e">
                         <fieldset>
                             <legend>Have you read this book?</legend>
                             <input type="radio" name="readStatus" id="yes" value="read" required>
