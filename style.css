@@ -81,69 +81,66 @@ body {
     width: 100%;
     min-height: 100dvh;
     display: grid;
-    grid-template: min-content 1fr min-content / 1fr;
-    justify-items: center;
-    align-items: center;
-    background-image: url(./assets/joe-woods-white-brick-wall-unsplash.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: "Rubik regular";
+    grid-template: min-content 1fr min-content / 1fr 5fr;
 }
 
-header h1 {
-    position: relative;
-    top: 50px;
+header {
+    grid-area: 1 / 2 / 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 50px;
+    background-color: #ffffff;
+}
+
+header > h1 {
     font-family: "Rubik bold";
-    font-size: 4rem;
+    font-size: 2.5rem;
+    color: #0a0908;
+}
+
+header > button {
+    display: grid;
+    grid-template-columns: 25px max-content;
+    justify-self: end;
+    justify-items: center;
+    align-items: center;
+    gap: 5px;
+    padding: 15px;
+    width: min-content;
+    border: none;
+    border-radius: 10px;
+    background-color: #22333b;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+header > button:hover {
+    transform: scale(1.05);
+}
+
+header > button > svg {
+    width: min-content;
+    height: auto;
+    fill: #ffffff;
+}
+
+header > button > p {
+    color: #ffffff;
+    font-family: "Rubik bold";
 }
 
 main {
-    height: 100%;
-    width: 100%;
+    grid-area: 2 / 2 / 3 / 3;
     display: grid;
-    grid-template: repeat(auto-fit, minmax(1fr, 6fr)) / 1fr;
-    gap: 80px;
     justify-items: center;
-    align-content: center;
+    align-items: center;
+    padding: 50px 50px 0 50px;
+    background-color: #0a0908;
+    font-family: "Rubik regular";
 }
 
-main .shelves {
-    display: grid;
-    grid-template: repeat(3, min-content) / 1fr;
-    justify-items: center;
-    align-content: center;
-    gap: 30px;
-    width: 50%;
-    height: auto;
-}
-
-.shelves > div {
-    display: grid;
-    grid-template: 1fr min-content / 1fr;
-    justify-items: center;
-    width: 100%;
-    height: 150px;
-}
-
-.shelves > div > div {
-    width: 80%;
-    max-height: 150px;
-    /* border: 1px solid black; */
-}
-
-.shelves > div > div ~ div {
-    width: 100%;
-    height: 20px;
-    border: none;
-    background-image: url(./assets/maria-kovalets-wood-unsplash.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    box-shadow: 0 15px 10px 2px rgb(0 0 0 / 0.4);
-}
-
-.shelves dialog:open,
-.bottom dialog:open {
+main > dialog:open {
     display: grid;
     grid-template: min-content 1fr min-content / repeat(2, 1fr);
     column-gap: 20px;
@@ -154,7 +151,7 @@ main .shelves {
     border-radius: 10px;
 }
 
-dialog .closeBtn {
+dialog > #closeBtn {
     grid-area: 1 / 1 / 2 / 3;
     display: grid;
     justify-self: end;
@@ -163,12 +160,6 @@ dialog .closeBtn {
     padding: 0;
     border: none;
     background-color: rgb(0, 0, 0 , 0) ;
-}
-
-.closeBtn > svg {
-    fill: #6c757d;
-    width: 100%;
-    height: auto;
 }
 
 dialog > form {
@@ -217,29 +208,6 @@ form > div > input {
     border-radius: 8px;
 }
 
-main .bottom {
-    display: grid;
-    grid-template: 1fr / 1fr;
-    justify-items: center;
-    align-items: start;
-}
-
-.bottom > button {
-    cursor: pointer;
-    padding-inline: 30px;
-    padding-block: 10px;
-    border: none;
-    border-radius: 10px;
-    background-color: #000000;
-    color: #ffffff;
-    font-weight: 700;
-    transition: transform 0.2s ease-in-out;
-}
-
-.bottom > button:hover {
-    transform: scale(1.1);
-}
-
 dialog #submitBtn,
 dialog #cancelBtn {
     cursor: pointer;
@@ -251,45 +219,87 @@ dialog #cancelBtn {
     color: #ffffff;
 }
 
-footer .footerlink {
-    position: relative;
-    bottom: 5px;
-}
+/* main .shelves {
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: 20px;
+    background-color: #ffffff;
+    background-image: url(./assets/joe-woods-white-brick-wall-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 5px 10px 2px rgb(0 0 0 / 0.1);
+} */
 
-.footerlink > a {
-    color: #000000;
-}
-
-/* Books displayed on the shelves styles */
-div[id="shelf1"],
-div[id="shelf2"],
-div[id="shelf3"] {
+aside {
+    grid-area: 1 / 1 / 4 / 2;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(0, 50px));
-    gap: 5px;
+    grid-template-rows: min-content min-content;
+    justify-items: start;
+    gap: 100px;
+    background-color: #22333b;
 }
 
-.book {
+aside .logo {
     display: grid;
-    grid-template-rows: minmax(0, 130px);
+    grid-template: min-content / 50px 1fr;
     justify-items: center;
-    align-items: end;
-    padding: 5px;
-    font-weight: 700;
-    cursor: pointer;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
     color: #ffffff;
-    transition: transform 0.2s ease-in-out;
 }
 
-.book:hover {
-    transform: scale(1.1);
-    box-shadow: 0 5px 10px 2px rgba(255, 255, 255, 1);
+.logo > svg {
+    fill: #ffffff;
 }
 
-.book-title {
-    font-size: 0.7rem;
-    font-weight: 700;
-    writing-mode: sideways-lr;
-    text-orientation: mixed;
+.logo > p {
+    display: grid;
+    align-self: center;
+    font-family: "Rubik bold";
+    font-size: 1.5rem;
+}
+
+aside nav {
+    display: grid;
+    grid-template: min-content / 35px 1fr;
+    width: 100%;
+    gap: 5px;
+    padding-left: 20px;
+    color: #22333b;
+    background-color: #ffffff;
+}
+
+nav > svg {
+    display: grid;
+    justify-self: center;
+    fill: #22333b;
+}
+
+nav > a {
+    display: grid;
+    align-self: center;
+    font-family: "Rubik bold";
+    text-decoration: none;
     cursor: pointer;
+}
+
+nav > a:visited {
+    color: #ffffff;
+}
+
+footer {
+    grid-area: 3 / 2 / 4 / 3;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    min-height: 50px;
+    font-size: 0.8rem;
+    font-family: "Rubik regular";
+    color: #ffffff;
+    background-color: #0a0908;
+}
+
+footer > div > a {
+    color: #ffffff;
 }
