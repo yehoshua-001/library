@@ -10,98 +10,114 @@
 <body>
     <header>
         <h1>My Library</h1>
+        <button command="show-modal" commandfor="add-new-book">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>book-plus-outline</title>
+                <path d="M13.09 20C13.21 20.72 13.46 21.39 13.81 22H6C4.89 22 4 21.11 4 20V4C4 2.9 
+                4.89 2 6 2H18C19.11 2 20 2.9 20 4V13.09C19.67 13.04 19.34 13 19 13C18.66 13 18.33 
+                13.04 18 13.09V4H13V12L10.5 9.75L8 12V4H6V20H13.09M20 
+                18V15H18V18H15V20H18V23H20V20H23V18H20Z"/>
+            </svg>
+            <p>Add New Book</p>
+        </button>
     </header>
     <main>
-        <section class="shelves">
-            <div>
-                <div id="shelf1"></div>
-                <div></div>
-            </div>
-            <div>
-                <div id="shelf2"></div>
-                <div></div>
-            </div>
-            <div>
-                <div id="shelf3"></div>
-                <div></div>
-            </div>
-            <dialog id="bookDialog">
-                <button class="closeBtn" command="close" commandfor="bookDialog">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <title>close</title>
-                        <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
-                    </svg>
-                </button>
-                <form id="bookDialogForm">
-                    <div class="item-a">
-                        <label for="title">Title</label>
-                        <input type="text" name="title" id="title" disabled>
-                    </div>
-                    <div class="item-b">
-                        <label for="author">Author</label>
-                        <input type="text" name="author" id="author" disabled>
-                    </div>
-                    <div class="item-c">
-                        <label for="pages">Pages</label>
-                        <input type="tel" name="pages" id="pages" disabled>
-                    </div>
-                    <div class="item-d">
-                        <label for="datePublish">Date Published</label>
-                        <input type="date" name="datePublish" id="datePublish" disabled>
-                    </div>
-                    <div class="item-e">
-                        <fieldset>
-                            <legend>Have you read this book?</legend>
-                            <input type="radio" name="readStatus" id="yes" value="read">
-                            <label for="yes">Yes</label>
-                            <input type="radio" name="readStatus" id="no" value="not read yet">
-                            <label for="no">Not yet</label>
-                        </fieldset>
-                    </div>
-                </form>
-            </dialog>
-        </section>
-        <section class="bottom">
-            <button command="show-modal" commandfor="dialog">Add New Book</button>
-            <dialog id="dialog">
-                <button class="closeBtn" command="close" commandfor="dialog">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <title>close</title>
-                        <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
-                    </svg>
-                </button>
-                <form id="form" action="">
-                    <div class="item-a">
-                        <label for="title">Title</label>
-                        <input type="text" name="title" id="title" required>
-                    </div>
-                    <div class="item-b">
-                        <label for="author">Author</label>
-                        <input type="text" name="author" id="author" required>
-                    </div>
-                    <div class="item-c">
-                        <label for="pages">Pages</label>
-                        <input type="tel" name="pages" id="pages" required>
-                    </div>
-                    <div class="item-d">
-                        <label for="datePublish">Date Published</label>
-                        <input type="date" name="datePublish" id="datePublish" required>
-                    </div>
-                    <div class="item-e">
-                        <fieldset>
-                            <legend>Have you read this book?</legend>
-                            <input type="radio" name="readStatus" id="yes" value="read" required>
-                            <label for="yes">Yes</label>
-                            <input type="radio" name="readStatus" id="no" value="not read yet">
-                            <label for="no">Not yet</label>
-                        </fieldset>
-                    </div>
-                </form>
-                <button id="submitBtn" type="submit" form="form">Add Book</button>
-                <button id="cancelBtn" command="close" commandfor="dialog">Cancel</button>
-            </dialog>
-        </section>
+        <div class="my-library"></div>
+        <dialog id="show-book-info">
+            <button class="closeBtn" command="close" commandfor="bookDialog">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <title>close</title>
+                    <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,
+                    17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+                </svg>
+            </button>
+            <form id="book-info">
+                <div class="item-a">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" disabled>
+                </div>
+                <div class="item-b">
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author" disabled>
+                </div>
+                <div class="item-c">
+                    <label for="pages">Pages</label>
+                    <input type="tel" name="pages" id="pages" disabled>
+                </div>
+                <div class="item-d">
+                    <label for="datePublish">Date Published</label>
+                    <input type="date" name="datePublish" id="datePublish" disabled>
+                </div>
+                <div class="item-e">
+                    <fieldset>
+                        <legend>Have you read this book?</legend>
+                        <input type="radio" name="readStatus" id="yes" value="read">
+                        <label for="yes">Yes</label>
+                        <input type="radio" name="readStatus" id="no" value="not read yet">
+                        <label for="no">Not yet</label>
+                    </fieldset>
+                </div>
+            </form>
+        </dialog>
+        <dialog id="add-new-book">
+            <button id="closeBtn" command="close" commandfor="add-new-book">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <title>close</title>
+                    <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,
+                    19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
+                </svg>
+            </button>
+            <form id="new-book-form" action="">
+                <div class="item-a">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" required>
+                </div>
+                <div class="item-b">
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author" required>
+                </div>
+                <div class="item-c">
+                    <label for="pages">Pages</label>
+                    <input type="tel" name="pages" id="pages" required>
+                </div>
+                <div class="item-d">
+                    <label for="datePublish">Date Published</label>
+                    <input type="date" name="datePublish" id="datePublish" required>
+                </div>
+                <div class="item-e">
+                    <fieldset>
+                        <legend>Have you read this book?</legend>
+                        <input type="radio" name="readStatus" id="yes" value="read" required>
+                        <label for="yes">Yes</label>
+                        <input type="radio" name="readStatus" id="no" value="not read yet">
+                        <label for="no">Not yet</label>
+                    </fieldset>
+                </div>
+            </form>
+            <button id="submitBtn" type="submit" form="new-book-form">Add Book</button>
+            <button id="cancelBtn" command="close" commandfor="add-new-book">Cancel</button>
+        </dialog>
     </main>
+    <aside>
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>book-open-page-variant</title>
+                <path d="M19 2L14 6.5V17.5L19 13V2M6.5 5C4.55 5 2.45 5.4 1 6.5V21.16C1 21.41 1.25 21.66 
+                1.5 21.66C1.6 21.66 1.65 21.59 1.75 21.59C3.1 20.94 5.05 20.5 6.5 20.5C8.45 20.5 10.55 20.9 
+                12 22C13.35 21.15 15.8 20.5 17.5 20.5C19.15 20.5 20.85 20.81 22.25 21.56C22.35 21.61 22.4 
+                21.59 22.5 21.59C22.75 21.59 23 21.34 23 21.09V6.5C22.4 6.05 21.75 5.75 21 5.5V19C19.9 18.65 
+                18.7 18.5 17.5 18.5C15.8 18.5 13.35 19.15 12 20V6.5C10.55 5.4 8.45 5 6.5 5Z"/>
+            </svg>
+            <p>Project Library</p>
+        </div>
+        <nav>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>bookshelf</title>
+                <path d="M9 3V18H12V3H9M12 5L16 18L19 17L15 4L12 5M5 5V18H8V5H5M3 19V21H21V19H3Z"/>
+            </svg>            
+            <a>My Library</a>
+        </nav>
+    </aside>
     <footer>
         <div class="footerlink">
             &copy;
