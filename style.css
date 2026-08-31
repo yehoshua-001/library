@@ -90,13 +90,13 @@ header {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     padding: 50px;
-    background-color: #ffffff;
+    background-color: #0a0908;
 }
 
 header > h1 {
     font-family: "Rubik bold";
     font-size: 2.5rem;
-    color: #0a0908;
+    color: #ffffff;
 }
 
 header > button {
@@ -136,22 +136,34 @@ main {
     justify-items: center;
     align-items: center;
     padding: 50px 50px 0 50px;
-    background-color: #0a0908;
+    background-color: #ffffff;
     font-family: "Rubik regular";
 }
 
-main > dialog:open {
-    display: grid;
-    grid-template: min-content 1fr min-content / repeat(2, 1fr);
-    column-gap: 20px;
-    min-width: max-content;
-    min-height: auto;
-    padding: 50px;
-    border: none;
-    border-radius: 10px;
+/* main .myLibrary {
+    min-width: 100%;
+    min-height: 100%;
+    background-color: #ffffff;
+} */
+
+main > dialog {
+    &[open] {
+        display: grid;
+        grid-template: min-content 1fr min-content / repeat(2, 1fr);
+        column-gap: 20px;
+        min-width: max-content;
+        min-height: auto;
+        padding: 50px;
+        border: none;
+        border-radius: 10px;
+        inset: 0;        
+    }
+    &::backdrop {
+        background-color: rgb(10, 9, 8, 0.6);
+    }
 }
 
-dialog > #closeBtn {
+dialog > .closeBtn {
     grid-area: 1 / 1 / 2 / 3;
     display: grid;
     justify-self: end;
@@ -201,11 +213,20 @@ form > div > fieldset > legend {
     font-size: 0.8rem;
 }
 
+form > div > fieldset > label,
+form > div > fieldset > input {
+    cursor: pointer;
+}
+
 form > div > input {
     padding-block: 5px;    
     padding-inline: 8px;
     border: 1px solid #adb5bd;
     border-radius: 8px;
+}
+
+form > div > input:focus {
+    outline: 2px solid #22333b;
 }
 
 dialog #submitBtn,
@@ -215,20 +236,9 @@ dialog #cancelBtn {
     padding-block: 10px;
     border: none;
     border-radius: 8px;
-    background-color: #000000;
+    background-color: #22333b;
     color: #ffffff;
 }
-
-/* main .shelves {
-    min-width: 100%;
-    min-height: 100%;
-    border-radius: 20px;
-    background-color: #ffffff;
-    background-image: url(./assets/joe-woods-white-brick-wall-unsplash.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: 0 5px 10px 2px rgb(0 0 0 / 0.1);
-} */
 
 aside {
     grid-area: 1 / 1 / 4 / 2;
@@ -296,10 +306,10 @@ footer {
     min-height: 50px;
     font-size: 0.8rem;
     font-family: "Rubik regular";
-    color: #ffffff;
-    background-color: #0a0908;
+    color: #000000;
+    background-color: #ffffff;
 }
 
 footer > div > a {
-    color: #ffffff;
+    color: #000000;
 }
