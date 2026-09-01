@@ -15,16 +15,15 @@ function Book(title, author, pages, datePublish, readStatus){
 function addBookToLibrary(title, author, pages, datePublish, readStatus){
     const book = new Book(title, author, pages, datePublish, readStatus);
     myLibrary.push(book);
-    console.table(book);
+    displayBookToLibrary();    
     // This is for testing purposes
-    // displayBookToLibrary(); 
-    // const books = Array.from(document.querySelectorAll('.book'));
-    // books.forEach(book => {
-    //     book.addEventListener("click", () => {
-    //         const bookIndex = books.indexOf(book);
-    //         displayBookInformation(bookIndex);
-    //     });
-    // });
+    const books = Array.from(document.querySelectorAll('.book'));
+    books.forEach(book => {
+        book.addEventListener("click", () => {
+            const bookIndex = books.indexOf(book);
+            displayBookInformation(bookIndex);
+        });
+    });
 }
 
 const dialog = document.querySelector('#addNewBook');
@@ -49,35 +48,47 @@ form.addEventListener("submit", (event) => {
     const readStatus = document.querySelector('form[id="newBookForm"] input[name="readStatus"]:checked').value;
 
     addBookToLibrary(title, author, pages, datePublish, readStatus);
-    // displayBookToLibrary();
     form.reset();
     dialog.close();
     
-    // const books = Array.from(document.querySelectorAll('.book'));
-    // books.forEach(book => {
-    //     book.addEventListener("click", () => {
-    //         const bookIndex = books.indexOf(book);
-    //         displayBookInformation(bookIndex);
-    //     });
-    // });
+    const books = Array.from(document.querySelectorAll('.book'));
+    books.forEach(book => {
+        book.addEventListener("click", () => {
+            const bookIndex = books.indexOf(book);
+            displayBookInformation(bookIndex);
+        });
+    });
 });
+
+const library = document.querySelector('div[class="myLibrary"]');
 
 // Books displayed on the shelves after submitting
 function displayBookToLibrary(){
     const lastBook = myLibrary[myLibrary.length - 1];
     const bookDesign = document.createElement('div');
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    bookDesign.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    bookDesign.classList.add('book');
+    const bookTitle = document.createElement('p');
+    bookTitle.textContent = `${lastBook.title}`
+    bookTitle.classList.add('book-title');
+
+    bookDesign.appendChild(bookTitle);
+    library.appendChild(bookDesign);
 };
 
-const bookDialog = document.querySelector('#bookDialog');
-const bookCard = document.querySelector('#bookDialogForm');
+const bookDialog = document.querySelector('#showBookInfo');
+const bookCard = document.querySelector('#bookInfoForm');
 
 // Displaying modal for book information
 function displayBookInformation(bookIndex){
     const book = myLibrary.at(bookIndex);
-    const title = document.querySelector('form[id="book-info"] input[id="title"]');
-    const author = document.querySelector('form[id="book-info"] input[id="author"]');
-    const pages = document.querySelector('form[id="book-info"] input[id="pages"]');
-    const datePublish = document.querySelector('form[id="book-info"] input[id="datePublish"]');
+    const title = document.querySelector('form[id="bookInfoForm"] input[id="title"]');
+    const author = document.querySelector('form[id="bookInfoForm"] input[id="author"]');
+    const pages = document.querySelector('form[id="bookInfoForm"] input[id="pages"]');
+    const datePublish = document.querySelector('form[id="bookInfoForm"] input[id="datePublish"]');
 
     title.value = book.title;
     author.value = book.author;
@@ -88,6 +99,6 @@ function displayBookInformation(bookIndex){
 }
 
 // This is for testing purposes
-// for (let i = 1; i < 20; i++){
-//     addBookToLibrary(`Book${i}`, 'Joshua', '67', '2026-08-29', 'not read yet');
-// };
+for (let i = 1; i < 20; i++){
+    addBookToLibrary(`Book${i}`, 'Joshua', '67', '2026-08-29', 'not read yet');
+};
