@@ -23,15 +23,15 @@
     </header>
     <main>
         <div class="myLibrary"></div>
-        <!-- <dialog id="showBookInfo">
-            <button class="closeBtn" command="close" commandfor="bookDialog">
+        <dialog id="showBookInfo">
+            <button class="closeBtn" command="close" commandfor="showBookInfo">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <title>close</title>
                     <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,
                     17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
                 </svg>
             </button>
-            <form id="bookInfo">
+            <form id="bookInfoForm">
                 <div class="item-a">
                     <label for="title">Title</label>
                     <input type="text" name="title" id="title" disabled>
@@ -58,7 +58,7 @@
                     </fieldset>
                 </div>
             </form>
-        </dialog> -->
+        </dialog>
         <dialog id="addNewBook">
             <button class="closeBtn" command="close" commandfor="addNewBook">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -93,6 +93,10 @@
                         <label for="no">Not yet</label>
                     </fieldset>
                 </div>
+                <!-- <div class="f">
+                    <label for="image">Image (Optional)</label>
+                    <input type="file" name="image" id="image">
+                </div> -->
             </form>
             <button id="submitBtn" type="submit" form="newBookForm">Add Book</button>
             <button id="cancelBtn" command="close" commandfor="addNewBook">Cancel</button>
@@ -121,7 +125,7 @@
     <footer>
         <div class="footerlink">
             &copy;
-            <a id="odinlink" href="https://www.theodinproject.com/about" target="_blank">The Odin Project</a>. All rights reserved. | 
+            <a id="odinlink" href="https://www.theodinproject.com/about" target="_blank">The Odin Project</a>. All rights reserved. 
             <a id="githublink" href="https://github.com/yehoshua-001/library" target="_blank">github.com/yehoshua-001</a>
         </div>
     </footer>
