@@ -146,7 +146,7 @@ main .myLibrary {
     display: grid;
     grid-template-rows: repeat(auto-fit, minmax(0, max-content));
     grid-template-columns: repeat(auto-fit, minmax(0, 150px));
-    justify-content: center;
+    justify-content: start;
     gap: 15px;
 }
 
@@ -227,6 +227,18 @@ form > div {
     grid-template: min-content 1fr / 1fr;
 }
 
+form > div > input {
+    padding-block: 5px;    
+    padding-inline: 8px;
+    border: 1px solid #adb5bd;
+    border-radius: 8px;
+    color: #000000;
+}
+
+form > div > input:focus {
+    outline: 2px solid #22333b;
+}
+
 form > div > fieldset {
     display: grid;
     grid-template: repeat(2, max-content) / repeat(2, max-content);
@@ -243,20 +255,31 @@ form > div > fieldset > legend {
 }
 
 form > div > fieldset > label,
-form > div > fieldset > input {
+form > div > fieldset > input[name="readStatus"] {
     cursor: pointer;
 }
 
-form > div > input {
-    padding-block: 5px;    
-    padding-inline: 8px;
-    border: 1px solid #adb5bd;
-    border-radius: 8px;
+form > div > fieldset > input {
+    border: none;
+    background-color: rgb(0, 0, 0, 0);
     color: #000000;
 }
 
-form > div > input:focus {
-    outline: 2px solid #22333b;
+fieldset[id="fieldsetBookInfo"] {
+    display: grid;
+    grid-template: 1fr / 1fr max-content;
+}
+
+fieldset[id="fieldsetBookInfo"] > button {
+    grid-area: 1 / 2 / 2 / 3;
+    cursor: pointer;
+    padding-inline: 12px;
+    padding-block: 6px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    background-color: #22333b;
+    color: #ffffff;
 }
 
 dialog #submitBtn,
@@ -267,6 +290,17 @@ dialog #cancelBtn {
     border: none;
     border-radius: 8px;
     background-color: #22333b;
+    color: #ffffff;
+}
+
+dialog #removeBtn {
+    grid-area: 3 / 2 / 4 / 3;
+    cursor: pointer;
+    padding-inline: 30px;
+    padding-block: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #c1121f;
     color: #ffffff;
 }
 
