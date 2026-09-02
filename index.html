@@ -49,15 +49,15 @@
                     <input type="date" name="datePublish" id="datePublish" disabled>
                 </div>
                 <div class="item-e">
-                    <fieldset>
-                        <legend>Have you read this book?</legend>
-                        <input type="radio" name="readStatus" id="yes" value="read">
-                        <label for="yes">Yes</label>
-                        <input type="radio" name="readStatus" id="no" value="not read yet">
-                        <label for="no">Not yet</label>
+                    <fieldset id="fieldsetBookInfo">
+                        <legend>Read</legend>
+                        <input type="text" id="readStatus" disabled>
+                        <label for="readStatus"></label>
+                        <button id="readBtn" type="button">Change Read Status</button>
                     </fieldset>
                 </div>
             </form>
+            <button id="removeBtn" type="button">Remove</button>
         </dialog>
         <dialog id="addNewBook">
             <button class="closeBtn" command="close" commandfor="addNewBook">
@@ -87,16 +87,12 @@
                 <div class="item-e">
                     <fieldset>
                         <legend>Have you read this book?</legend>
-                        <input type="radio" name="readStatus" id="yes" value="read" required>
+                        <input type="radio" name="readStatus" id="yes" value="Yes" required>
                         <label for="yes">Yes</label>
-                        <input type="radio" name="readStatus" id="no" value="not read yet">
+                        <input type="radio" name="readStatus" id="no" value="Not yet">
                         <label for="no">Not yet</label>
                     </fieldset>
                 </div>
-                <!-- <div class="f">
-                    <label for="image">Image (Optional)</label>
-                    <input type="file" name="image" id="image">
-                </div> -->
             </form>
             <button id="submitBtn" type="submit" form="newBookForm">Add Book</button>
             <button id="cancelBtn" command="close" commandfor="addNewBook">Cancel</button>
