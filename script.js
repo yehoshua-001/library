@@ -12,6 +12,15 @@ function Book(title, author, pages, datePublish, readStatus){
     this.readStatus = readStatus;
 }
 
+Book.prototype.changeReadStatus = function(){
+    if(this.readStatus === "Yes"){
+        this.readStatus = "Not yet";
+    }
+    else if(this.readStatus === "Not yet"){
+        this.readStatus = "Yes";
+    }
+};
+
 function addBookToLibrary(title, author, pages, datePublish, readStatus){
     const book = new Book(title, author, pages, datePublish, readStatus);
     myLibrary.push(book);
@@ -44,42 +53,37 @@ form.addEventListener("submit", (event) => {
     dialog.close();
 });
 
+const library = document.querySelector('div[class="myLibrary"]');
+const bookDialog = document.querySelector('#showBookInfo');
 
 // Books displayed on the shelves after submitting
 function displayBookToLibrary(){
-    const library = document.querySelector('div[class="myLibrary"]');
-    const book = myLibrary[myLibrary.length - 1];
-    const bookDesign = document.createElement('div');
-    bookDesign.setAttribute('data-id', `${book.id}`);
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    bookDesign.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-    bookDesign.classList.add('book');
-    const bookTitle = document.createElement('p');
-    bookTitle.textContent = `${book.title}`
-    bookTitle.classList.add('book-title');
+    library.replaceChildren();
+    myLibrary.forEach((book, index) => {
+        const bookID = myLibrary[index].id;
+        const bookCover = document.createElement('div');
+        bookCover.setAttribute('data-id', `${bookID}`);
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        bookCover.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        bookCover.classList.add('book');
+        const bookTitle = document.createElement('p');
+        bookTitle.textContent = `${myLibrary[index].title}`;
+        bookTitle.classList.add('book-title');
+        bookCover.appendChild(bookTitle);
+        library.appendChild(bookCover);
 
-    bookDesign.appendChild(bookTitle);
-    library.appendChild(bookDesign);
-
-    // Loop for displaying book information
-    // when a book in library is clicked
-    const books = Array.from(document.querySelectorAll('.book'));
-    books.forEach(book => {
-        book.addEventListener("click", () => {
-            const bookIndex = books.indexOf(book);
-            displayBookInformation(bookIndex);
+        bookCover.addEventListener("click", () => {
+            displayBookInformation(index);
         });
     });
 };
 
-const bookDialog = document.querySelector('#showBookInfo');
-const bookCard = document.querySelector('#bookInfoForm');
 
 // Displaying modal for book information
-function displayBookInformation(bookIndex){
-    const book = myLibrary.at(bookIndex);
+function displayBookInformation(index){
+    const book = myLibrary[index];
     const title = document.querySelector('form[id="bookInfoForm"] input[id="title"]');
     const author = document.querySelector('form[id="bookInfoForm"] input[id="author"]');
     const pages = document.querySelector('form[id="bookInfoForm"] input[id="pages"]');
@@ -94,18 +98,21 @@ function displayBookInformation(bookIndex){
 
     bookDialog.showModal();
 
-    // const readBtn = document.querySelector('#readBtn');
-    // readBtn.addEventListener("click", () => {
-    //     const bookID = myLibrary[bookIndex].id;
-    //     changeReadStatus(bookID);
-    // });
+    const readBtn = document.querySelector('#readBtn');
+    readBtn.addEventListener("click", () => {
+        book.changeReadStatus();    
+        displayBookInformation(index);
+    });
+
+    const remove = document.querySelector('button[id="removeBtn"]');
+    remove.addEventListener("click", () => {
+        myLibrary.splice(index, 1);
+        bookDialog.close();
+        displayBookToLibrary();
+    });
 }
 
-// Book.prototype.changeReadStatus = function(bookID) {
-//     console.log(bookID)
-// }
-
 // This is for testing purposes
-for (let i = 1; i < 20; i++){
-    addBookToLibrary(`Book${i}`, 'Joshua', '67', '2026-08-29', 'Yes');
-};
+addBookToLibrary(`Book1`, 'Joshua', '67', '2026-08-29', 'Yes');
+addBookToLibrary(`Book2`, 'Joshua', '69', '2026-08-29', 'Not yet');
+addBookToLibrary(`Book3`, 'Joshua', '1738', '2026-08-29', 'Yes');
