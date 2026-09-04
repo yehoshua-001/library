@@ -135,7 +135,7 @@ main {
     display: grid;
     justify-items: center;
     align-items: center;
-    padding: 50px 50px 0 50px;
+    padding: 25px 25px 0 25px;
     background-color: #ffffff;
     font-family: "Rubik regular";
 }
@@ -145,21 +145,22 @@ main .myLibrary {
     min-height: 100%;
     display: grid;
     grid-template-rows: repeat(auto-fit, minmax(0, max-content));
-    grid-template-columns: repeat(auto-fit, minmax(0, 150px));
+    grid-template-columns: repeat(auto-fit, minmax(0, max-content));
     justify-content: start;
     gap: 15px;
 }
 
-/* Books displayed on the library styles */
 .book {
     display: grid;
-    grid-template-rows: minmax(0, 130px);
-    justify-items: center;
-    align-items: center;
-    padding: 5px;
-    font-weight: 700;
+    grid-template-rows: repeat(auto-fit, minmax(0, min-content));
+    grid-template-columns: 1fr 1fr;
+    justify-items: start;
+    align-items: start;
+    gap: 10px;
+    padding: 30px;
     cursor: pointer;
     color: #ffffff;
+    background-color: #0a0908;
     transition: transform 0.2s ease-in-out;
 }
 
@@ -168,10 +169,47 @@ main .myLibrary {
     box-shadow: 0 5px 20px 2px rgba(0, 0, 0, .5);
 }
 
-.book-title {
-    font-size: 0.7rem;
-    font-weight: 700;
+.title,
+.author,
+.pages,
+.datePublish {
+    grid-column: span 2;
+}
+
+.readStatus {
+    grid-column: 1 / 2;
+}
+
+.readBtn {
+    grid-column: 2 / 3;
+    justify-self: end;
     cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    color: #ffffff;
+    background-color: #007200;
+}
+
+.readBtn:hover {
+    color: #007200;
+    background-color: #ffffff;
+}
+
+.removeBtn {
+    grid-column: 2 / 3;
+    justify-self: end;
+    cursor: pointer;
+    padding-inline: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #c1121f;
+    color: #ffffff;
+}
+
+.removeBtn:hover {
+    color: #c1121f;
+    background-color: #ffffff;
 }
 
 main > dialog {
@@ -265,23 +303,6 @@ form > div > fieldset > input {
     color: #000000;
 }
 
-fieldset[id="fieldsetBookInfo"] {
-    display: grid;
-    grid-template: 1fr / 1fr max-content;
-}
-
-fieldset[id="fieldsetBookInfo"] > button {
-    grid-area: 1 / 2 / 2 / 3;
-    cursor: pointer;
-    padding-inline: 12px;
-    padding-block: 6px;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.7rem;
-    background-color: #22333b;
-    color: #ffffff;
-}
-
 dialog #submitBtn,
 dialog #cancelBtn {
     cursor: pointer;
@@ -290,17 +311,6 @@ dialog #cancelBtn {
     border: none;
     border-radius: 8px;
     background-color: #22333b;
-    color: #ffffff;
-}
-
-dialog #removeBtn {
-    grid-area: 3 / 2 / 4 / 3;
-    cursor: pointer;
-    padding-inline: 30px;
-    padding-block: 10px;
-    border: none;
-    border-radius: 8px;
-    background-color: #c1121f;
     color: #ffffff;
 }
 
@@ -367,7 +377,7 @@ footer {
     display: grid;
     justify-items: center;
     align-items: end;
-    min-height: 50px;
+    min-height: 25px;
     margin-bottom: 5px;
     font-size: 0.8rem;
     font-family: "Rubik regular";
