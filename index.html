@@ -23,42 +23,6 @@
     </header>
     <main>
         <div class="myLibrary"></div>
-        <dialog id="showBookInfo">
-            <button class="closeBtn" command="close" commandfor="showBookInfo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <title>close</title>
-                    <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,
-                    17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/>
-                </svg>
-            </button>
-            <form id="bookInfoForm">
-                <div class="item-a">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" id="title" disabled>
-                </div>
-                <div class="item-b">
-                    <label for="author">Author</label>
-                    <input type="text" name="author" id="author" disabled>
-                </div>
-                <div class="item-c">
-                    <label for="pages">Pages</label>
-                    <input type="tel" name="pages" id="pages" disabled>
-                </div>
-                <div class="item-d">
-                    <label for="datePublish">Date Published</label>
-                    <input type="date" name="datePublish" id="datePublish" disabled>
-                </div>
-                <div class="item-e">
-                    <fieldset id="fieldsetBookInfo">
-                        <legend>Read</legend>
-                        <input type="text" id="readStatus" disabled>
-                        <label for="readStatus"></label>
-                        <button id="readBtn" type="button">Change Read Status</button>
-                    </fieldset>
-                </div>
-            </form>
-            <button id="removeBtn" type="button">Remove</button>
-        </dialog>
         <dialog id="addNewBook">
             <button class="closeBtn" command="close" commandfor="addNewBook">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
