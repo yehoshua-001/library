@@ -16,7 +16,7 @@ Book.prototype.changeReadStatus = function(){
     if(this.readStatus === "Yes"){
         this.readStatus = "Not yet";
     }
-    else if(this.readStatus === "Not yet"){
+    else{
         this.readStatus = "Yes";
     }
 };
@@ -61,56 +61,51 @@ function displayBookToLibrary(){
     library.replaceChildren();
     myLibrary.forEach((book, index) => {
         const bookID = myLibrary[index].id;
-        const bookCover = document.createElement('div');
-        bookCover.setAttribute('data-id', `${bookID}`);
-        const r = Math.floor(Math.random() * 256);
-        const g = Math.floor(Math.random() * 256);
-        const b = Math.floor(Math.random() * 256);
-        bookCover.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-        bookCover.classList.add('book');
-        const bookTitle = document.createElement('p');
-        bookTitle.textContent = `${myLibrary[index].title}`;
-        bookTitle.classList.add('book-title');
-        bookCover.appendChild(bookTitle);
-        library.appendChild(bookCover);
+        const card = document.createElement('div');
+        card.setAttribute('data-id', `${bookID}`);
+        card.classList.add('book');
+        const title = document.createElement('p');
+        title.textContent = `Title: ${myLibrary[index].title}`;
+        title.classList.add('title');
+        card.appendChild(title);
+        const author = document.createElement('p');
+        author.textContent = `Author: ${myLibrary[index].author}`;
+        author.classList.add('author');
+        card.appendChild(author);
+        const pages = document.createElement('p');
+        pages.textContent = `Pages: ${myLibrary[index].pages}`;
+        pages.classList.add('pages');
+        card.appendChild(pages);
+        const datePublish = document.createElement('p');
+        datePublish.textContent = `Date Published: ${myLibrary[index].datePublish}`;
+        datePublish.classList.add('datePublish');
+        card.appendChild(datePublish);
+        const readStatus = document.createElement('p');
+        readStatus.textContent = `Read:  ${myLibrary[index].readStatus}`;
+        readStatus.classList.add('readStatus');
+        card.appendChild(readStatus);
 
-        bookCover.addEventListener("click", () => {
-            displayBookInformation(index);
+        library.appendChild(card);
+
+        const readBtn = document.createElement('button');
+        readBtn.textContent = "Change Read";
+        readBtn.classList.add('readBtn');
+        card.appendChild(readBtn);
+        readBtn.addEventListener("click", () => {
+            book.changeReadStatus();
+            displayBookToLibrary();
+        });
+
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = "Remove";
+        removeBtn.classList.add('removeBtn');
+        card.appendChild(removeBtn);
+        removeBtn.addEventListener("click", () => {
+            myLibrary.splice(index, 1);
+            displayBookToLibrary();
         });
     });
 };
-
-
-// Displaying modal for book information
-function displayBookInformation(index){
-    const book = myLibrary[index];
-    const title = document.querySelector('form[id="bookInfoForm"] input[id="title"]');
-    const author = document.querySelector('form[id="bookInfoForm"] input[id="author"]');
-    const pages = document.querySelector('form[id="bookInfoForm"] input[id="pages"]');
-    const datePublish = document.querySelector('form[id="bookInfoForm"] input[id="datePublish"]');
-    const readStatus = document.querySelector('form[id="bookInfoForm"] input[id="readStatus"]');
-
-    title.value = book.title;
-    author.value = book.author;
-    pages.value = book.pages;
-    datePublish.value = book.datePublish;
-    readStatus.value = book.readStatus;
-
-    bookDialog.showModal();
-
-    const readBtn = document.querySelector('#readBtn');
-    readBtn.addEventListener("click", () => {
-        book.changeReadStatus();    
-        displayBookInformation(index);
-    });
-
-    const remove = document.querySelector('button[id="removeBtn"]');
-    remove.addEventListener("click", () => {
-        myLibrary.splice(index, 1);
-        bookDialog.close();
-        displayBookToLibrary();
-    });
-}
 
 // This is for testing purposes
 addBookToLibrary(`Book1`, 'Joshua', '67', '2026-08-29', 'Yes');
