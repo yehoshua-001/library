@@ -94,14 +94,17 @@ function displayBookToLibrary(){
         readStatus.classList.add('readStatus');
         infoContainer.appendChild(readStatus);
 
+        const readBtnContainer = document.createElement('div');
+        readBtnContainer.classList.add('readBtnContainer');
         const readBtn = document.createElement('button');
         readBtn.textContent = "Change Read";
         readBtn.classList.add('readBtn');
-        infoContainer.appendChild(readBtn);
         readBtn.addEventListener("click", () => {
             book.changeReadStatus();
             displayBookToLibrary();
         });
+        readBtnContainer.appendChild(readBtn);
+        card.appendChild(readBtnContainer);
 
         const removeBtnContainer = document.createElement('div');
         removeBtnContainer.classList.add('removeBtnContainer');
