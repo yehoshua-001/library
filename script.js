@@ -64,50 +64,64 @@ function displayBookToLibrary(){
         const card = document.createElement('div');
         card.setAttribute('data-id', `${bookID}`);
         card.classList.add('book');
+        library.appendChild(card);
+        const infoContainer = document.createElement('div');
+        infoContainer.classList.add('infoContainer');
+        card.appendChild(infoContainer);
+
         const title = document.createElement('p');
         title.textContent = `Title: ${myLibrary[index].title}`;
         title.classList.add('title');
-        card.appendChild(title);
+        infoContainer.appendChild(title);
+
         const author = document.createElement('p');
         author.textContent = `Author: ${myLibrary[index].author}`;
         author.classList.add('author');
-        card.appendChild(author);
+        infoContainer.appendChild(author);
+
         const pages = document.createElement('p');
         pages.textContent = `Pages: ${myLibrary[index].pages}`;
         pages.classList.add('pages');
-        card.appendChild(pages);
+        infoContainer.appendChild(pages);
+
         const datePublish = document.createElement('p');
         datePublish.textContent = `Date Published: ${myLibrary[index].datePublish}`;
         datePublish.classList.add('datePublish');
-        card.appendChild(datePublish);
-        const readStatus = document.createElement('p');
-        readStatus.textContent = `Read:  ${myLibrary[index].readStatus}`;
-        readStatus.classList.add('readStatus');
-        card.appendChild(readStatus);
+        infoContainer.appendChild(datePublish);
 
-        library.appendChild(card);
+        const readStatus = document.createElement('p');
+        readStatus.textContent = `Read: ${myLibrary[index].readStatus}`;
+        readStatus.classList.add('readStatus');
+        infoContainer.appendChild(readStatus);
 
         const readBtn = document.createElement('button');
         readBtn.textContent = "Change Read";
         readBtn.classList.add('readBtn');
-        card.appendChild(readBtn);
+        infoContainer.appendChild(readBtn);
         readBtn.addEventListener("click", () => {
             book.changeReadStatus();
             displayBookToLibrary();
         });
 
+        const removeBtnContainer = document.createElement('div');
+        removeBtnContainer.classList.add('removeBtnContainer');
         const removeBtn = document.createElement('button');
         removeBtn.textContent = "Remove";
         removeBtn.classList.add('removeBtn');
-        card.appendChild(removeBtn);
         removeBtn.addEventListener("click", () => {
             myLibrary.splice(index, 1);
             displayBookToLibrary();
         });
+        removeBtnContainer.appendChild(removeBtn);
+        card.appendChild(removeBtnContainer);
     });
 };
 
-// This is for testing purposes
-addBookToLibrary(`Book1`, 'Joshua', '67', '2026-08-29', 'Yes');
-addBookToLibrary(`Book2`, 'Joshua', '69', '2026-08-29', 'Not yet');
-addBookToLibrary(`Book3`, 'Joshua', '1738', '2026-08-29', 'Yes');
+// Samples
+addBookToLibrary('No Longer Human', 'Osamu Dazai, Donald Keene', '176', '1948-01-25', 'Not yet');
+addBookToLibrary('Crime and Punishment', 'Fyodor Dostoevsky', '671', '1866-01-01', 'Not yet');
+addBookToLibrary('To Kill a Mocking Bird', 'Harper Lee', '323', '1960-07-11', 'Not yet');
+addBookToLibrary('Pride and Prejudice', 'Jane Austen, Anna Quindlen', '279', '1813-01-27', 'Not yet');
+addBookToLibrary('1984', 'George Orwell, Thomas Pynchon', '368', '1949-6-8', 'Not yet');
+addBookToLibrary('The Little Prince', 'Antoine de Saint-Exupery, Richard Howard', '96', '1943-4-6', 'Not yet');
+addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', '180', '1925-4-10', 'Not yet');
