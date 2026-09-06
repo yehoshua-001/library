@@ -25,6 +25,7 @@
     font-display: swap;
 }
 
+/* -------------------------------------------------------------------- */
 /*
     Josh's Custom CSS Reset
     https://www.joshwcomeau.com/css/custom-css-reset/
@@ -72,6 +73,8 @@ h1, h2, h3, h4, h5, h6 {
 #root, #__next {
     isolation: isolate;
 }
+
+/* -------------------------------------------------------------------- */
 
 html {
     height: 100%;
@@ -156,7 +159,6 @@ main .myLibrary {
     grid-template-columns: 1fr;
     justify-items: start;
     align-items: start;
-    gap: 10px;
     padding: 30px;
     cursor: pointer;
     font-size: 0.9rem;
@@ -195,8 +197,18 @@ main .myLibrary {
     grid-column: 1 / 2;
 }
 
+.readBtnContainer,
+.removeBtnContainer {
+    width: 100%;
+    display: grid;
+    justify-items: end;
+}
+
+.readBtnContainer {
+    margin-bottom: 8px;
+}
+
 .readBtn {
-    grid-area: 5 / 2 / 6 / 3;
     justify-self: end;
     cursor: pointer;
     border: none;
@@ -211,15 +223,7 @@ main .myLibrary {
     background-color: #ffffff;
 }
 
-.removeBtnContainer {
-    display: grid;
-    width: 100%;
-    justify-items: end;
-}
-
 .removeBtn {
-    grid-column: 2 / 3;
-    /* justify-self: end; */
     cursor: pointer;
     padding-inline: 10px;
     border: none;
