@@ -5,6 +5,9 @@ This project is a web-based library that stored books information in an array wh
 
 <strong>Note:</strong> Since this project doesn't require any storage to save the information between reloads, it will only keep the "submitted" information in memory, therefore using a "preventDefault()" method for such event will prevent the form from sending the information to a server by default. The reason this project doesn't require any storage is that the purpose of this project is only to demonstrate how to make <em>object constructors</em> and accessing <em>object prototypes</em>.
 
+## Demo
+https://github.com/user-attachments/assets/4c79fc83-8b6f-4ea9-9e1b-544fdac4266c
+
 ## Sample Image
 <img src="./assets/library-sample-image.png" alt="library sample image" width="1000px">
 
