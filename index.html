@@ -42,7 +42,7 @@
                 </div>
                 <div class="item-c">
                     <label for="pages">Pages</label>
-                    <input type="tel" name="pages" id="pages" required>
+                    <input type="number" name="pages" id="pages" required>
                 </div>
                 <div class="item-d">
                     <label for="datePublish">Date Published</label>
@@ -51,10 +51,14 @@
                 <div class="item-e">
                     <fieldset>
                         <legend>Have you read this book?</legend>
-                        <input type="radio" name="readStatus" id="yes" value="Yes" required>
-                        <label for="yes">Yes</label>
-                        <input type="radio" name="readStatus" id="no" value="Not yet">
-                        <label for="no">Not yet</label>
+                        <div>
+                            <input type="radio" name="readStatus" id="yes" value="Read" required>
+                            <label for="yes">Read</label>                            
+                        </div>
+                        <div>
+                            <input type="radio" name="readStatus" id="no" value="Not read yet">
+                            <label for="no">Not read yet</label>                            
+                        </div>
                     </fieldset>
                 </div>
             </form>
