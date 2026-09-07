@@ -13,11 +13,11 @@ function Book(title, author, pages, datePublish, readStatus){
 }
 
 Book.prototype.changeReadStatus = function(){
-    if(this.readStatus === "Yes"){
-        this.readStatus = "Not yet";
+    if(this.readStatus === "Read"){
+        this.readStatus = "Not read yet";
     }
     else{
-        this.readStatus = "Yes";
+        this.readStatus = "Read";
     }
 };
 
@@ -70,37 +70,33 @@ function displayBookToLibrary(){
         card.appendChild(infoContainer);
 
         const title = document.createElement('p');
-        title.textContent = `Title: ${myLibrary[index].title}`;
+        title.textContent = `${myLibrary[index].title}`;
         title.classList.add('title');
         infoContainer.appendChild(title);
 
         const author = document.createElement('p');
-        author.textContent = `Author: ${myLibrary[index].author}`;
+        author.textContent = `${myLibrary[index].author}`;
         author.classList.add('author');
         infoContainer.appendChild(author);
 
-        const pages = document.createElement('p');
-        pages.textContent = `Pages: ${myLibrary[index].pages}`;
-        pages.classList.add('pages');
-        infoContainer.appendChild(pages);
-
         const datePublish = document.createElement('p');
-        datePublish.textContent = `Date Published: ${myLibrary[index].datePublish}`;
+        datePublish.textContent = `${myLibrary[index].datePublish}`;
         datePublish.classList.add('datePublish');
         infoContainer.appendChild(datePublish);
 
-        const readStatus = document.createElement('p');
-        readStatus.textContent = `Read: ${myLibrary[index].readStatus}`;
-        readStatus.classList.add('readStatus');
-        infoContainer.appendChild(readStatus);
+        const pages = document.createElement('p');
+        pages.textContent = `${myLibrary[index].pages} pages`;
+        pages.classList.add('pages');
+        infoContainer.appendChild(pages);
 
         const readBtnContainer = document.createElement('div');
         readBtnContainer.classList.add('readBtnContainer');
         const readBtn = document.createElement('button');
-        readBtn.textContent = "Change Read";
+        readBtn.textContent = `${book.readStatus}`;
         readBtn.classList.add('readBtn');
         readBtn.addEventListener("click", () => {
             book.changeReadStatus();
+            readBtn.textContent = `${book.readStatus}`;
             displayBookToLibrary();
         });
         readBtnContainer.appendChild(readBtn);
@@ -121,10 +117,52 @@ function displayBookToLibrary(){
 };
 
 // Samples
-addBookToLibrary('No Longer Human', 'Osamu Dazai, Donald Keene', '176', '1948-01-25', 'Not yet');
-addBookToLibrary('Crime and Punishment', 'Fyodor Dostoevsky', '671', '1866-01-01', 'Not yet');
-addBookToLibrary('To Kill a Mocking Bird', 'Harper Lee', '323', '1960-07-11', 'Not yet');
-addBookToLibrary('Pride and Prejudice', 'Jane Austen, Anna Quindlen', '279', '1813-01-27', 'Not yet');
-addBookToLibrary('1984', 'George Orwell, Thomas Pynchon', '368', '1949-6-8', 'Not yet');
-addBookToLibrary('The Little Prince', 'Antoine de Saint-Exupery, Richard Howard', '96', '1943-4-6', 'Not yet');
-addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', '180', '1925-4-10', 'Not yet');
+addBookToLibrary(
+    'No Longer Human', 
+    'Osamu Dazai, Donald Keene', 
+    '176', 
+    '1948-01-25', 
+    'Not read yet'
+);
+addBookToLibrary(
+    'Crime and Punishment', 
+    'Fyodor Dostoevsky', 
+    '671', 
+    '1866-01-01', 
+    'Not read yet'
+);
+addBookToLibrary(
+    'To Kill a Mocking Bird', 
+    'Harper Lee', 
+    '323', 
+    '1960-07-11', 
+    'Not read yet'
+);
+addBookToLibrary(
+    'Pride and Prejudice', 
+    'Jane Austen, Anna Quindlen', 
+    '279', 
+    '1813-01-27', 
+    'Not read yet'
+);
+addBookToLibrary(
+    '1984', 
+    'George Orwell, Thomas Pynchon', 
+    '368', 
+    '1949-6-8', 
+    'Not read yet'
+);
+addBookToLibrary(
+    'The Little Prince', 
+    'Antoine de Saint-Exupery, Richard Howard', 
+    '96', 
+    '1943-4-6', 
+    'Not read yet'
+);
+addBookToLibrary(
+    'The Great Gatsby', 
+    'F. Scott Fitzgerald', 
+    '180', 
+    '1925-4-10', 
+    'Not read yet'
+);
